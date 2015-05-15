@@ -1,4 +1,39 @@
 <h1>Sound Follow</h1>
+<h2>A place where you can store information about bands and venues.</h2>
+
+<p><a href="/bands">Add a new band</a></p>
+<p><a href="/venues">Add a new venue</a></p>
+
+
+<h3>Here are all the bands in this database:</h3>
+
+<% if @bands.any?() %>
+  <p>Click on a band to see information about them and mark which venues they played:</p>
+
+  <ul>
+    <% @bands.each do |band| %>
+      <li><a href="/bands/<%= band.id() %>"><%= band.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no bands added yet!</p>
+<% end %>
+
+
+<h3>Here are all the venues in this database:</h3>
+
+<% if @venues.any?() %>
+  <p>Click on a venue to see information about it and mark which bands played there:</p>
+
+  <ul>
+    <% @venues.each do |venue| %>
+      <li><a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>no venues added yet</p>
+<% end %>
+<!-- <h1>Sound Follow</h1>
 
 
 <h3>Music Info</h3>
@@ -19,4 +54,4 @@
 </form>
 <br>
 <a href='/add_venues/'> Add Venues </a>
-</br>
+</br> -->

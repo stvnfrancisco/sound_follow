@@ -1,7 +1,7 @@
 development:
     adapter: postgresql
-    database: recipe_development
+    database: sound_follow_development
 
 test:
     adapter: postgresql
-    database: recipe_test
+    database: sound_follow_test
