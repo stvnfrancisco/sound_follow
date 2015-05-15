@@ -1,0 +1,22 @@
+<h1>Sound Follow</h1>
+
+
+<h3>Music Info</h3>
+<% if @bands.any?() %>
+<% @bands.each() do |band| %>
+<ul>
+  <li><a href='/band/<%=band.id()%>'> <%=band.title()%></a></li>
+</ul>
+  <%end%>
+<%else%>
+  <p>no bands</p>
+  <%end%>
+
+  <form action='/band_edit/' method='post'>
+  <label for='band_title'> Add band: </label>
+  <input id='band_title' name='band_title' type='text'>
+  <button type='submit' class='btn btn-success'> Save Band </button>
+</form>
+<br>
+<a href='/add_venues/'> Add Venues </a>
+</br>
