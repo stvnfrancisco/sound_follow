@@ -1,66 +1,81 @@
 require("bundler/setup")
-Bundler.require(:default)
+Bundler.require(:default, :test)
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get("/") do
   @bands = Band.all()
-  @venues = Venue.all()
   erb(:index)
 end
 
-get("/bands") do
-  @bands = Band.all()
-  erb(:bands)
-end
-
-get("/venues") do
+get('/venues/') do
   @venues = Venue.all()
   erb(:venues)
 end
 
-post("/bands") do
-  name = params.fetch("name")
-  band = Band.new({:name => name, :id => nil})
-  band.save()
-  @bands = Band.all()
-  erb(:bands)
-end
-
-post("/venues") do
-  name = params.fetch("name")
-  venue = Venue.new({:name => name, :id => nil})
-  venue.save()
+post('/venue/save/') do
+  Venue.create({:title => params.fetch('new_venue')})
   @venues = Venue.all()
   erb(:venues)
 end
 
-get("/bands/:id") do
-  @band = Band.find(params.fetch("id").to_i())
-  @venues = Venue.all()
-  erb(:band_info)
-end
-
-get("/venues/:id") do
-  @venue = Venue.find(params.fetch("id").to_i())
+post('/') do
+  Band.create({:title => params.fetch('new_band')})
   @bands = Band.all()
-  erb(:venues_info)
+  erb(:index)
 end
 
-patch("/bands/:id") do
-  band_id = params.fetch("id").to_i()
-  @band = Band.find(band_id)
-  venue_ids = params.fetch("venue_ids")
-  @band.update({:venue_ids => venue_ids})
+get('/band/:id') do
+  @band = Band.find(params.fetch('id').to_i())
+  @venues = @band.venues()
+  @all_venues = Venue.all()
+  erb(:band)
+end
+
+patch('/band/:id') do
+  @band = Band.find(params.fetch('id'))
+  @venue_ids = params.fetch('venue_ids')
+  if @venue_ids.any?
+    @venue_ids.each do |venue_id|
+      @new_venue = Venue.find(venue_id)
+      @band.venues.push(@new_venue)
+    end
+  end
+end
+
+get('/venue/:id') do
+  @venue = Venue.find(params.fetch('id').to_i())
+  @bands = @venue.bands()
+  @all_bands = Band.all() 
+  erb(:venue)
+end
+
+patch('/venue/:id') do
+  @venue = Venue.find(params.fetch('id'))
+  @band_ids = params.fetch('band_ids')
+  if @band_ids.any?
+    @band_ids.each do |band_id|
+      @new_band = Band.find(band_id)
+      @venue.bands.push(@new_band)
+    end
+  end
+end
+
+delete('/band/:id') do
+  @band = Band.find(params.fetch('id'))
+  @band.destroy
+  @bands = Band.all
+  erb(:index)
+end
+
+get('/venue/:id') do
+  @venue = Venue.find(params.fetch('id'))
+  erb(:venue)
+end
+
+delete('/venue/:id') do
+  @venue = Venue.find(params.fetch('id'))
+  @venue.destroy
   @venues = Venue.all()
-  erb(:band_info)
-end
-
-patch("/venues/:id") do
-  venue_id = params.fetch("id").to_i()
-  @venue = Venue.find(venue_id)
-  band_ids = params.fetch("band_ids")
-  @venue.update({:band_ids => band_ids})
-  @bands = Band.all()
-  erb(:venue_info)
+  erb(:venues)
 end

@@ -3,13 +3,36 @@ body {
   background-color: black;
 }
 h1 {
-  color: red;
+  text-align: center;
+  font-family: Helvetica Narrow, sans-serif;
+  color: pink;
+  font-size: 150px;
+  font-weight: bold;
 }
 
 h2 {
-  color: red;
+  color: #c123e5;
+  text-align: center;
+  font-size: 40px;
 }
 
 h3 {
-  color: red;
+  color: #c123e5;
+  font-size: 30px;
+}
+
+meta {
+  viewport: inline;
+}
+
+label {
+  color: #66560F;
+}
+
+p {
+  color: #c123e5;
+}
+
+ li {
+  color: #c123e5;
 }

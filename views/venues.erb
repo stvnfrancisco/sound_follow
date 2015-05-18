@@ -1,44 +1,20 @@
-<h1>Welcome to the Sound Follow Venue Page</h1>
-<p>Add a venue to the database:</p>
+<a href='/'> Home </a>
+ <h1>Venues</h1>
+<p>Add a venue</p>
 
-<form action="/venues" method="post">
-  <label for="name">Venue's name:</label>
-  <input id="name" name="name" type="text">
-
-  <button type="submit">Add Venue</button>
-</form>
-
-
-<% if @venues.any?() %>
-  <p>Click on a venue to see information about it and add bands to it:</p>
-
-  <ul>
-    <% @venues.each do |venue| %>
-    <li><a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>no venues added</p>
-<% end %>
-
-<p><a href="/bands">See all bands</a></p>
-
-<p><a href="/">Home</a></p>
-<!-- <h3>Here are your venues</h3>
 <% if @venues.any?() %>
 <% @venues.each() do |venue| %>
-<ul>
-  <li><%=venue.name()%></a></li>
-</ul>
-  <%end%>
-<%else%>
-  <p>No Venues</p>
-  <%end%>
+  <ul>
+      <li><a href='/venue/<%=venue.id()%>'> <%=venue.title()%></a></li>
+  </ul>
+    <%end%>
+<%else %>
+  <p> no venues </p>
+<%end%>
 
-  <form action='/venue_save/' method='post'>
-  <label for='venue_name'> Add a Venue: </label>
-  <input id='venue_name' name='venue_name' type='text'>
-  <button type='submit' class='btn btn-success'> Add Venue </button>
-</form> -->
 
-<!-- <a href='/'> Home </a> -->
+<form action='/venue/save/' method='post'>
+  <label for='new_venue'> Enter Venue Name: </label>
+  <input id='new_venue' name='new_venue' type='text' </input>
+  <button type='submit' class='btn btn-success'> Save Venue</button>
+</form>
