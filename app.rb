@@ -60,6 +60,7 @@ patch('/venue/:id') do
       @venue.bands.push(@new_band)
     end
   end
+  redirect("/venue/#{params.fetch('id')}")
 end
 
 delete('/band/:id') do
