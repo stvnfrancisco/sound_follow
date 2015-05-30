@@ -8,7 +8,7 @@ Built using Ruby ver.: ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin14
 
 Please Bundle install the following Gems: 'sinatra' 'sinatra-contrib' 'rspec' 'capybara' 'pry'
 
-Start the database in another tab bash: $ postgres | then in another tab run: $ psql
+Start the database in another terminal tab: $ postgres | then in another tab run: $ psql
 
 
 
