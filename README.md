@@ -4,7 +4,11 @@ by: Steven Francisco
 
 This app allows the user to add, update, delete and list bands and venues.
 
+<<<<<<< HEAD
 Built using Ruby ver.: ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin14]
+=======
+Built using Ruby ver.: ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-darwin14]
+>>>>>>> 1d49f4e97ab81dd78f18d28f95e1b1c5d41e4841
 
 Please Bundle install the following Gems: 'sinatra' 'sinatra-contrib' 'rspec' 'capybara' 'pry'
 
