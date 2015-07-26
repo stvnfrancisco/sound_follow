@@ -4,13 +4,27 @@ by: Steven Francisco
 
 This app allows the user to add, update, delete and list bands and venues.
 
+To run this app in your browser:
+<br>
+                                  bash/terminal:
+                                  <br>
+                                   1.) guest$ bundle
+                                   <br>
+                                   2.) Open postgres in the terminal and run psql in another tab.
+                                   <br>
+                                   3.) guest$ rake db:create
+                                   <br>
+                                   4.) guest$ rake db:migrate
+                                   <br>
+                                   5.) guest$ rake db:test:prepare
+                                   <br>
+                                   6.) guest$ ruby app.rb
+                                   <br>
+                                   In  browser run localhost:4567
+<hr>
 Built using Ruby ver.: ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-darwin14]
 
 Please Bundle install the following Gems: 'sinatra' 'sinatra-contrib' 'rspec' 'capybara' 'pry'
-
-Start the database in another terminal tab: $ postgres | then in another tab run: $ psql
-
-
 
 MIT License: Copyright (c) 2015
 
